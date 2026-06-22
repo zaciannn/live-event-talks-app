@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">BigQuery release notes</title>
+  <id>https://cloud.google.com/bigquery/docs/release-notes</id>
+  <updated>2026-06-22T05:44:22Z</updated>
+  <entry>
+    <title>BigQuery release notes - June 20, 2026</title>
+    <link href="https://cloud.google.com/bigquery/docs/release-notes#June_20_2026"/>
+    <id>https://cloud.google.com/bigquery/docs/release-notes#June_20_2026</id>
+    <updated>2026-06-20T12:00:00Z</updated>
+    <content type="html">
+      &lt;p&gt;BigQuery now supports new SQL features including Unicode identifiers like 🚀 and support for caching.&lt;/p>
+    </content>
+  </entry>
+  <entry>
+    <title>BigQuery release notes - June 15, 2026</title>
+    <link href="https://cloud.google.com/bigquery/docs/release-notes#June_15_2026"/>
+    <id>https://cloud.google.com/bigquery/docs/release-notes#June_15_2026</id>
+    <updated>2026-06-15T08:30:00Z</updated>
+    <content type="html">
+      &lt;p&gt;This release includes performance improvements for queries joining large datasets.&lt;/p>
+    </content>
+  </entry>
+</feed>

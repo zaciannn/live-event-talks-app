@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Google Cloud BigQuery Release Notes</title>
+    <link>https://cloud.google.com/release-notes</link>
+    <description>Release notes for Google Cloud BigQuery</description>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
+    <item>
+      <title>BigQuery: New query queuing feature</title>
+      <link>https://cloud.google.com/bigquery/docs/release-notes#June_22_2026</link>
+      <description>BigQuery now automatically queues queries when concurrency limits are reached. This improves reliability.</description>
+      <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
+      <guid>https://cloud.google.com/bigquery/docs/release-notes#June_22_2026</guid>
+    </item>
+    <item>
+      <title>BigQuery: Additional region support</title>
+      <link>https://cloud.google.com/bigquery/docs/release-notes#June_15_2026</link>
+      <description>BigQuery dataset storage and query processing are now available in new regions. See documentation for details.</description>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 GMT</pubDate>
+      <guid>https://cloud.google.com/bigquery/docs/release-notes#June_15_2026</guid>
+    </item>
+  </channel>
+</rss>
