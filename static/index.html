@@ -11,9 +11,15 @@
     <header>
       <h1>BigQuery Release Notes</h1>
       <div class="controls">
-        <button id="theme-toggle">Toggle Theme</button>
+        <div class="theme-switch-wrapper">
+          <span class="theme-switch-label">Dark Mode</span>
+          <button id="theme-toggle" class="theme-toggle-switch" aria-label="Toggle Dark Mode">
+            <span class="theme-toggle-slider"></span>
+          </button>
+        </div>
         <button id="refresh-btn">Refresh</button>
         <button id="share-btn" disabled>Share to Twitter</button>
+        <button id="export-btn">Export CSV</button>
       </div>
     </header>
 

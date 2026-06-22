@@ -97,10 +97,79 @@ button:disabled {
   border-color: var(--primary-color);
 }
 
+.release-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+}
+
 .release-title {
   margin-top: 0;
   font-size: 18px;
   color: var(--primary-color);
+  flex: 1;
+}
+
+.copy-card-btn {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.copy-card-btn:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Theme switch styles */
+.theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.theme-switch-label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.theme-toggle-switch {
+  width: 44px;
+  height: 22px;
+  background-color: #ccc;
+  border-radius: 11px;
+  position: relative;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.theme-toggle-slider {
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  transition: transform 0.3s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme .theme-toggle-switch {
+  background-color: var(--primary-color);
+}
+
+body.dark-theme .theme-toggle-slider {
+  transform: translateX(22px);
 }
 
 .release-date {

@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const refreshBtn = document.getElementById("refresh-btn");
   const themeToggleBtn = document.getElementById("theme-toggle");
   const shareBtn = document.getElementById("share-btn");
+  const exportBtn = document.getElementById("export-btn");
   const spinner = document.getElementById("spinner");
   const messageContainer = document.getElementById("message-container");
 
@@ -90,9 +91,34 @@ document.addEventListener("DOMContentLoaded", () => {
         item.classList.add("dark-item");
       }
       
+      const headerDiv = document.createElement("div");
+      headerDiv.className = "release-header";
+
       const title = document.createElement("h3");
       title.className = "release-title";
       title.textContent = release.title || "Untitled Release";
+
+      const copyBtn = document.createElement("button");
+      copyBtn.className = "copy-card-btn";
+      copyBtn.textContent = "Copy";
+      copyBtn.addEventListener("click", (e) => {
+        e.stopPropagation(); // Prevent card selection toggle
+        
+        const plainDesc = stripHtml(release.description || "");
+        const textToCopy = `Title: ${release.title || ""}\nDate: ${release.pubDate ? new Date(release.pubDate).toLocaleDateString() : "Unknown"}\nLink: ${release.link || ""}\n\nDescription:\n${plainDesc}`;
+        
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          copyBtn.textContent = "Copied!";
+          setTimeout(() => {
+            copyBtn.textContent = "Copy";
+          }, 1500);
+        }).catch(err => {
+          console.error("Could not copy text: ", err);
+        });
+      });
+
+      headerDiv.appendChild(title);
+      headerDiv.appendChild(copyBtn);
 
       const date = document.createElement("div");
       date.className = "release-date";
@@ -103,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // We strip HTML tags when displaying description in the UI or let innerHTML show it (but we strip for Twitter sharing)
       desc.innerHTML = release.description || "";
 
-      item.appendChild(title);
+      item.appendChild(headerDiv);
       item.appendChild(date);
       item.appendChild(desc);
 
@@ -153,6 +179,37 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   refreshBtn.addEventListener("click", fetchReleases);
+
+  exportBtn.addEventListener("click", () => {
+    if (!releasesData || releasesData.length === 0) {
+      alert("No data available to export.");
+      return;
+    }
+    
+    // Convert release data to CSV format
+    const headers = ["Title", "Link", "Description", "Publish Date"];
+    const rows = releasesData.map(release => [
+      release.title || "",
+      release.link || "",
+      stripHtml(release.description || ""),
+      release.pubDate || ""
+    ]);
+
+    const csvContent = [
+      headers.map(h => `"${h.replace(/"/g, '""')}"`).join(","),
+      ...rows.map(r => r.map(val => `"${val.replace(/"/g, '""')}"`).join(","))
+    ].join("\n");
+
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", "bigquery_releases.csv");
+    link.style.visibility = "hidden";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  });
 
   // Initial fetch
   fetchReleases();
